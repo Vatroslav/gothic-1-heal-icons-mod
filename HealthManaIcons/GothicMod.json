@@ -1,0 +1,14 @@
+{
+  "name": "HealthManaIcons",
+  "title": "Health & Mana Icons",
+  "author": "Vatroslav",
+  "projectWebsiteURL": "https://github.com/Vatroslav/gothic-1-heal-icons-mod",
+  "description": "Shows the game's Health or Mana icon in the corner of every inventory item that restores Health or Mana, so you can tell food, herbs and potions apart without opening the tooltip.\n\nChange the icon size in Settings > Game > Health & Mana Icons.",
+  "modVersion": "0.1.0",
+  "scriptPreprocessorDefines": [],
+  "tags": [
+    "Enhancement"
+  ],
+  "loadOrder": "Normal",
+  "dependencies": []
+}
