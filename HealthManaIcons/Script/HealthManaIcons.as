@@ -167,11 +167,13 @@ class UHealthManaIconsBase : UGothicModExt_WidgetExtension
                 FlagsByKey.Add(Key, Existing | Flags);
             }
             Existing = 0;
-            FString Name = Item.m_Name.ToString();
-            if (!Name.IsEmpty())
+            // Not "Name": a local with that name shadows UObject's Name
+            // accessor (GetName) and the script fails to compile.
+            FString ItemName = Item.m_Name.ToString();
+            if (!ItemName.IsEmpty())
             {
-                FlagsByName.Find(Name, Existing);
-                FlagsByName.Add(Name, Existing | Flags);
+                FlagsByName.Find(ItemName, Existing);
+                FlagsByName.Add(ItemName, Existing | Flags);
             }
         }
     }
@@ -206,13 +208,13 @@ class UHealthManaIconsBase : UGothicModExt_WidgetExtension
 
     void RefreshRow(UHealthManaIconsRow Row)
     {
-        FString Name = "";
+        FString ItemName = "";
         if (IsValid(Row.Data) && !Row.Data.m_IsEmpty)
-            Name = Row.Data.m_Name.ToString();
-        if (Name == Row.ShownName)
+            ItemName = Row.Data.m_Name.ToString();
+        if (ItemName == Row.ShownName)
             return;
-        Row.ShownName = Name;
-        Row.ShowIcons(Name.IsEmpty() ? 0 : LookupFlags(Row.Data));
+        Row.ShownName = ItemName;
+        Row.ShowIcons(ItemName.IsEmpty() ? 0 : LookupFlags(Row.Data));
     }
 
     UFUNCTION()
